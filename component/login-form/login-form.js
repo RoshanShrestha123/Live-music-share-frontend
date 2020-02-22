@@ -9,7 +9,7 @@ class LoginForm extends LitElement {
   constructor() {
     super();
     this.userData = {
-      username: null,
+      email: null,
       password: null
     };
   }
@@ -35,11 +35,18 @@ class LoginForm extends LitElement {
       ...this.userData,
       [e.target.name]: e.target.value
     };
-
-    console.log(this.userData);
   }
   handleSubmit() {
-    console.log(this.userData);
+    fetch("http://localhost:8000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(this.userData)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
   }
   render() {
     return html`
@@ -47,8 +54,8 @@ class LoginForm extends LitElement {
         <div class="wrapper">
           <h1>Login form</h1>
           <paper-input
-            label="Username"
-            name="username"
+            label="Email"
+            name="email"
             @input=${this.handleChange.bind(this)}
           ></paper-input>
           <paper-input

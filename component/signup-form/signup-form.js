@@ -14,6 +14,9 @@ class SignupForm extends LitElement {
       password: null
     };
   }
+  connectedCallback(){
+      super.connectedCallback();
+  }
   static get styles() {
     return css`
       .signup-form {
@@ -31,16 +34,22 @@ class SignupForm extends LitElement {
       }
     `;
   }
+  
   handleChange(e) {
     this.userData = {
       ...this.userData,
       [e.target.name]: e.target.value
     };
-
-    console.log(this.userData);
   }
+
   handleSubmit() {
-    console.log(this.userData);
+    fetch('http://localhost:8000/api/auth/signup',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(this.userData)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
   }
   render() {
     return html`

@@ -1,17 +1,13 @@
-import { LitElement, html } from "lit-element";
-import "./component/login-form/login-form.js";
-import "./component/signup-form/signup-form";
-class Main extends LitElement {
-  constructor() {
-    super();
-  }
-  connectedCallback() {
-    super.connectedCallback();
-  }
-  render() {
-    return html`
-      <signup-form></signup-form>
-    `;
-  }
-}
-window.customElements.define("main-tag", Main);
+import {Router} from '@vaadin/router';
+import './component/login-form/login-form';
+import './component/signup-form/signup-form';
+import './component/landing-page/landing-page';
+
+const main = document.getElementById("main");
+const router = new Router(main);
+router.setRoutes([
+  { path: "/", component: "landing-page" },
+  { path: "/login", component: "login-form" },
+  { path: "/signup", component: "signup-form" },
+ 
+]);
