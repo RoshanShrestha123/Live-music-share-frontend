@@ -4,12 +4,14 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "polymer serve"
   },
   "author": "Roshan Shrestha",
   "license": "ISC",
   "dependencies": {
     "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-card": "^3.0.1",
     "@polymer/paper-input": "^3.2.0",
     "@vaadin/router": "^1.7.0",
     "@vaadin/vaadin-upload": "^4.2.2",
