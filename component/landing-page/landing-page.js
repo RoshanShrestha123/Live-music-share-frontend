@@ -1,29 +1,39 @@
 import { LitElement, html, css } from "lit-element";
-import '../dashboard/dashboard';
-import '../music-list/music-list-wrapper';
+import {Router} from '@vaadin/router';
+import "../music-player/music-player";
+import "../music-list/music-list-wrapper";
+import "@polymer/paper-button";
+
+import '../nav-bar/nav-bar'
 
 class LandingPage extends LitElement {
   constructor() {
     super();
   }
-  static get styles(){
-      return css `
-      *{
-        font-family:Roboto;
+  static get styles() {
+    return css`
+      * {
+        font-family: Roboto;
+        margin:0;
+        padding:0;
       }
-        .title{
-            text-align:center;
-        }
-      `;
+      .title {
+        text-align: center;
+      }
+      paper-button {
+        background-color:green;
+        color:white;
+      }
+    `;
   }
   
+
   render() {
     return html`
-    <div>
-      <h1 class="title">Music Share for Sunena</h1>
-      <music-list-wrapper></music-list-wrapper>
-    </div>
-
+      <div>
+      <nav-bar></nav-bar>
+        <music-list-wrapper></music-list-wrapper>
+      </div>
     `;
   }
 }
